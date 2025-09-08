@@ -11,11 +11,11 @@ Flask==3.0.3
 idna==3.7
 multidict==6.0.5
 packaging==24.0
-pillow==10.3.0
 protobuf==4.25.3
 requests==2.31.0
 tqdm==4.66.4
 typing_extensions==4.11.0
 urllib3==2.2.1
 yarl==1.9.4
+
 
