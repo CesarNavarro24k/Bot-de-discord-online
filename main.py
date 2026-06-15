@@ -2,6 +2,7 @@ import discord
 import random
 from discord.ext import commands
 import os
+from ollama import chat
 import webserver
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -58,5 +59,12 @@ async def repeat(ctx, times: int, content='repeating...'):
 async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
     await ctx.send(f'{member.name} joined {discord.utils.format_dt(member.joined_at)}')
+@bot.command()
+async def ia(ctx,pregunta:str):
+    response = chat(
+        model='gpt-oss:120b-cloud',
+        messages=[{'role': 'user', 'content': pregunta}],
+    )
+    await ctx.send(response.message.content)
 webserver.keep_alive()  
 bot.run(DISCORD_TOKEN)
